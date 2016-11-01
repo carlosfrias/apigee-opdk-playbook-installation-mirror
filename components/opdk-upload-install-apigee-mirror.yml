@@ -1,4 +1,4 @@
-c---
+---
 - hosts: '{{ hosts }}'
   serial: 1
   vars_files:
