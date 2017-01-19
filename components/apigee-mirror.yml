@@ -1,0 +1,37 @@
+---
+- hosts: mirror
+
+  vars:
+    mirror_file: /opt/apigee/customer/application/mirror.properties
+
+  tasks:
+  - name: Install mirror server
+    shell: /opt/apigee/apigee-service/bin/apigee-service apigee-mirror nginxconfig
+
+  - name: Create mirror.properties
+    file:
+      path: '{{ mirror_file }}'
+      state: touch
+      owner: apigee
+      group: apigee
+
+  - name: Add line
+    lineinfile:
+      dest: '{{ mirror_file }}'
+      line: '{{ item }}'
+    with_items:
+    - conf_apigee_mirror_listen_port=3939
+    - conf_apigee_mirror_server_name=localhost
+
+  - name: Nginx restart
+    shell: /opt/nginx/scripts/apigee-nginx restart
+
+  - name: Add nginx credentials
+    lineinfile:
+      backrefs: yes
+      dest: /etc/environment
+      regexp: "({{ item.attribute }}).*"
+      line: '{{ item.attribute }}{{ item.value }}'
+    with_items:
+    - { attribute: 'export MIRROR_USERNAME=', value: 'admin' }
+    - { attribute: 'export MIRROR_PASSWORD=', value: 'admin'}
