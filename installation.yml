@@ -46,4 +46,4 @@
   tags:
   - upload-archive
 
-- include: components/apigee-mirror.yml
+#- include: components/opdk-apigee-mirror-nginx.yml
