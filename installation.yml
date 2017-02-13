@@ -26,6 +26,7 @@
     user: 'root'
   tags:
   - root-user
+  - os-pre-req
 
 - include: components/opdk-pre-requisites.yml
   vars:
