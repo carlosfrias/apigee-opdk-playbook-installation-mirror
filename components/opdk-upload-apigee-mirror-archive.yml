@@ -14,4 +14,4 @@
   roles:
   - apigee-opdk-setup-bootstrap-archive-installer
   tags:
-  - install
+  - install-archive
