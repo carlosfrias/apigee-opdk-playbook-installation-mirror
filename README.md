@@ -46,7 +46,7 @@ need to install that Apigee mirror, then you can use the following:
     ansible-playbook upload_install_apigee_mirror.yml -vv -b --tags=install
 <!-- BEGIN Google Required Disclaimer -->
 
-# Required Disclaimer
+# Not Google Product Clause
 
 This is not an officially supported Google product.
 <!-- END Google Required Disclaimer -->
